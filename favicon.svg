@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Physics AI">
+  <rect width="32" height="32" rx="3" fill="#1c1915"/>
+  <path d="M8 10h16M8 15h12M8 20h16M8 25h8" stroke="#f4efe6" stroke-width="1.4" fill="none"/>
+  <circle cx="22.5" cy="24.5" r="2.2" fill="#c4654a"/>
+</svg>

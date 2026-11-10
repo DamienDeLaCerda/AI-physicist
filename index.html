@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Physics AI · the advisor’s guide to an AI physicist</title>
+  <meta name="description" content="A field guide for physicists and research groups using Get Physics Done: formulate a question, derive it, verify dimensions and limits, and keep the author responsible for the paper.">
+  <meta name="theme-color" content="#f3eee4">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,560;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Physics AI · the advisor’s guide to an AI physicist">
+  <meta property="og:description" content="How a research group runs Get Physics Done: scope, derivation, verification, and a manuscript you can still defend.">
+  <meta property="og:type" content="article">
+  <script>
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+    } catch (err) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="shell">
+    <header class="rail">
+      <div class="rail-top">
+        <a class="mark" href="#top">Physics AI<small>Field guide</small></a>
+        <div class="rail-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">Ink</button>
+        </div>
+      </div>
+      <button class="contents-btn" type="button" data-menu aria-expanded="false" aria-controls="section-nav">Contents</button>
+      <nav id="section-nav" class="rail-nav" aria-label="Sections">
+        <a href="#stance">Stance</a>
+        <a href="#roles">Who does what</a>
+        <a href="#record">The record</a>
+        <a href="#loop">The loop</a>
+        <a href="#example">Worked example</a>
+        <a href="#checks">What to demand</a>
+        <a href="#posture">Posture</a>
+        <a href="#publish">Through arXiv</a>
+        <a href="#afternoon">First afternoon</a>
+        <a href="#name">Your name</a>
+        <a href="#credit">Credit</a>
+      </nav>
+    </header>
+
+    <main id="main" class="page">
+      <article id="top">
+        <header class="hero">
+          <div>
+            <p class="kicker">For principal investigators, postdocs, students, and research engineers</p>
+            <h1>The advisor’s guide <em>to an AI physicist.</em></h1>
+            <p class="deck">Get Physics Done installs a research workflow into the coding agent you already run. It carries a question through scope, derivation, numerical checks, and a manuscript. You remain the person who can defend every claim.</p>
+            <p class="hero-links">
+              <a class="btn btn-primary" href="#loop">Read the working loop</a>
+              <a class="btn" href="#afternoon">Start this afternoon</a>
+              <a class="btn btn-quiet" href="https://github.com/psi-oss/get-physics-done" target="_blank" rel="noopener">Get Physics Done on GitHub</a>
+            </p>
+          </div>
+          <ol class="protocol" aria-label="Four stages">
+            <li>
+              <span>01</span>
+              <div>
+                <p class="stage">Formulate</p>
+                <p>Scope, assumptions, notation, and the checks that will count as done.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <p class="stage">Plan</p>
+                <p>A phased roadmap with tasks, dependencies, and success criteria.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <p class="stage">Execute</p>
+                <p>Specialist passes for derivations, numerics, literature, and writing.</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <p class="stage">Verify</p>
+                <p>Dimensions, limits, symmetry, conservation laws, numerical stability.</p>
+              </div>
+            </li>
+          </ol>
+        </header>
+
+        <dl class="facts">
+          <div>
+            <dt>Reference system</dt>
+            <dd>Get Physics Done 1.2.2, from Physical Superintelligence</dd>
+          </div>
+          <div>
+            <dt>Where the commands live</dt>
+            <dd>Claude Code, Codex, Gemini CLI, Copilot CLI, or OpenCode</dd>
+          </div>
+          <div>
+            <dt>First useful session</dt>
+            <dd>One afternoon, on a result you can already check</dd>
+          </div>
+          <div>
+            <dt>Upstream license</dt>
+            <dd>Apache-2.0</dd>
+          </div>
+        </dl>
+
+        <section id="stance">
+          <h2><span class="num">01</span>Stay in the advisor’s chair</h2>
+          <p class="lede">The system is built for a long physics project: multi-step analysis, numerical studies, a memory that survives the chat, and a manuscript at the end. It is built to prefer a checkable claim over an agreeable one.</p>
+          <blockquote>
+            Treat each agent turn like a graduate student’s work: trust the execution, but stay in the loop to verify and redirect.
+            <cite>Get Physics Done, on supervised mode</cite>
+          </blockquote>
+          <p>Supervised mode is the matching posture. It stops often enough that you can redirect a convention, a sign, or a numerical cutoff while the work is still cheap to redo. Balanced mode comes later, after you have seen how the system behaves on <em>your</em> problem.</p>
+          <p>A preferred explanation is a hypothesis. A failed lookup stays failed. An artifact that was never produced stays absent. Those three habits are the difference between a collaborator and a fluent draft.</p>
+        </section>
+
+        <section id="roles">
+          <h2><span class="num">02</span>Who does what</h2>
+          <p>Send this page to the group before the first working session. The roles below are the ones that keep a result publishable.</p>
+          <div class="roles">
+            <article class="role">
+              <h3>Principal investigator</h3>
+              <p>You set the question, the autonomy, and the claims allowed into the paper. Read the verification for a phase before you accept the milestone. Start on Supervised.</p>
+            </article>
+            <article class="role">
+              <h3>Postdoc or student</h3>
+              <p>You run one phase at a time. Bring your advisor the verification file and the state note, and keep the roadmap honest about what is still a stub.</p>
+            </article>
+            <article class="role">
+              <h3>Research engineer</h3>
+              <p>You own Node.js 20+, Python 3.11 with <code>venv</code>, the runtime login, and LaTeX when a paper is in scope. Pin a release for the group. <code>--upgrade</code> tracks unreleased <code>main</code>.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="record">
+          <h2><span class="num">03</span>The record is the project</h2>
+          <p>Chat is ephemeral. The durable memory is a folder named <code>GPD/</code> inside the research directory. Opening that folder should tell a colleague where the work stands without scrolling a transcript.</p>
+          <figure class="tree">
+            <pre>Project
+└── Milestone          v1.0, a submission, a revision
+    └── Phase          1, 2, 2.1, 3, …
+        └── Plan       01-01, 01-02, …
+            └── Task
+
+Wave 1   plans with no unmet dependencies
+Wave 2   plans that need wave 1
+Wave 3   plans that need earlier waves</pre>
+            <figcaption>Plans in one wave can run together. Later waves wait. Phase numbers continue across milestones, so a second paper may open at phase 6.</figcaption>
+          </figure>
+          <p>A phase is one coherent chunk of the milestone. Integer phases are the planned work. A decimal such as <code>2.1</code> is urgent work inserted later. Early phases beyond the one you are executing often remain stubs until someone runs <code>plan-phase</code> on them.</p>
+          <p>Each phase is expected to leave real files: <code>PROJECT.md</code>, <code>REQUIREMENTS.md</code>, <code>ROADMAP.md</code>, <code>STATE.md</code>, TeX derivations, Python checks, and figures. Across a long project the system can lock notation, sign choices, and verification assumptions for as many as 18 physics fields, so later phases inherit the same conventions.</p>
+          <div class="callout">
+            <strong>Before you step away.</strong> Run <code>pause-work</code> so the handoff is explicit. On return, <code>gpd resume</code> in a normal terminal reads the current workspace. If that is the wrong folder, <code>gpd resume --recent</code> lists others. Inside the runtime, <code>resume-work</code> continues, and <code>suggest-next</code> is the fastest following command.
+          </div>
+        </section>
+
+        <section id="loop">
+          <h2><span class="num">04</span>The working loop</h2>
+          <p>Install once from a normal terminal, in the folder where the project should live. The research commands then run inside the agent, with a prefix that depends on the runtime.</p>
+          <div class="codeblock">
+            <button class="copy" type="button" data-copy="install-cmd">Copy</button>
+            <pre id="install-cmd">npx -y get-physics-done</pre>
+          </div>
+          <p class="note">Node.js 20 or newer, Python 3.11+ with <code>venv</code>, and one runtime already installed: <code>claude</code>, <code>codex</code>, <code>gemini</code>, <code>gh copilot</code>, or <code>opencode</code>. On Windows, <code>winget install OpenJS.NodeJS.LTS</code> provides <code>node</code> and <code>npx</code>. To pin a runtime to this folder, pass the flags after <code>--</code>, for example <code>npx -y get-physics-done -- --claude --local</code>. Swap <code>--claude</code> for <code>--codex</code>, <code>--gemini</code>, <code>--copilot</code>, or <code>--opencode</code>.</p>
+          <p>After install, both of these should succeed: <code>gpd --help</code> in the normal terminal, and the runtime’s help command in the agent. <code>gpd doctor</code> is the readiness check. A warning that only mentions workflow presets or the LaTeX toolchain means the base install is usable and the manuscript tools are the part still thin. <code>gpd paper-build</code> is the build truth for a paper.</p>
+          <h3>Orient, then choose one path</h3>
+          <p class="ladder" aria-label="Orientation order">
+            <span>help</span><i>→</i>
+            <span>start</span><i>→</i>
+            <span>tour</span><i>→</i>
+            <span>new-project</span>
+            <span>or map-research</span><i>→</i>
+            <span>resume-work</span>
+          </p>
+          <div class="table-wrap">
+            <table>
+              <caption class="note">Command prefix by runtime. The workflow after the prefix is the same.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Runtime</th>
+                  <th scope="col">Help</th>
+                  <th scope="col">New work</th>
+                  <th scope="col">Existing folder</th>
+                  <th scope="col">Return</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Claude Code</th>
+                  <td><code>/gpd:help</code></td>
+                  <td><code>/gpd:new-project --minimal</code></td>
+                  <td><code>/gpd:map-research</code></td>
+                  <td><code>/gpd:resume-work</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">Gemini CLI</th>
+                  <td><code>/gpd:help</code></td>
+                  <td><code>/gpd:new-project --minimal</code></td>
+                  <td><code>/gpd:map-research</code></td>
+                  <td><code>/gpd:resume-work</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">Codex</th>
+                  <td><code>$gpd-help</code></td>
+                  <td><code>$gpd-new-project --minimal</code></td>
+                  <td><code>$gpd-map-research</code></td>
+                  <td><code>$gpd-resume-work</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">OpenCode</th>
+                  <td><code>/gpd-help</code></td>
+                  <td><code>/gpd-new-project --minimal</code></td>
+                  <td><code>/gpd-map-research</code></td>
+                  <td><code>/gpd-resume-work</code></td>
+                </tr>
+                <tr>
+                  <th scope="row">Copilot CLI</th>
+                  <td><code>/gpd-help</code></td>
+                  <td><code>/gpd-new-project --minimal</code></td>
+                  <td><code>/gpd-map-research</code></td>
+                  <td><code>/gpd-resume-work</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><code>start</code> is for a folder whose path you have not chosen. <code>tour</code> is a read-only walkthrough. <code>new-project --minimal</code> opens new work. <code>map-research</code> adopts a folder that already has notes or code. Pick one of those two and stay with it.</p>
+          <h3>One phase, then the next</h3>
+          <p class="ladder" aria-label="Phase loop">
+            <span>discuss-phase 1</span><i>→</i>
+            <span>plan-phase 1</span><i>→</i>
+            <span>execute-phase 1</span><i>→</i>
+            <span>verify-work 1</span>
+          </p>
+          <p>The full research loop is <code>new-project</code>, then that phase sequence, repeated, then <code>complete-milestone</code>. <code>progress</code> reports where the roadmap stands. <code>gpd progress --watch</code> in a second terminal is a live heartbeat. <code>gpd observe execution</code> is the read-only status when a long run goes quiet; if the status is uncertain, treat it as possibly stalled and inspect <code>gpd observe show --last 20</code>.</p>
+          <p>A side idea goes through <code>tangent</code> first: stay on the main line, take a short detour, defer it, or escalate. <code>branch-hypothesis</code> is the git-backed alternative, and <code>compare-branches</code> puts those results side by side. Use the branch when you mean to keep both lines.</p>
+        </section>
+
+        <section id="example">
+          <h2><span class="num">05</span>A worked research path</h2>
+          <p>The upstream project’s own example is a numerical conformal bootstrap for the 3D Ising CFT: bound low-lying operator dimensions from crossing symmetry. Inside the runtime, after the prefix for your agent:</p>
+          <div class="codeblock">
+            <button class="copy" type="button" data-copy="ising-cmd">Copy</button>
+            <pre id="ising-cmd">new-project
+Use crossing symmetry and the numerical conformal bootstrap
+to bound low-lying operator dimensions in the 3D Ising CFT.</pre>
+          </div>
+          <p>Formulation should ask about the correlator sector, conventions, target observables, numerical precision, and the verification strategy. It should then write <code>GPD/PROJECT.md</code>, <code>REQUIREMENTS.md</code>, <code>ROADMAP.md</code>, and <code>STATE.md</code>.</p>
+          <p>A sensible milestone sketch, which you flesh out one phase at a time, looks like this:</p>
+          <ol class="steps">
+            <li>Crossing-equation setup</li>
+            <li>Derivative-basis construction</li>
+            <li>Semidefinite-program formulation</li>
+            <li>Convergence checks</li>
+            <li>Interpretation of the bounds</li>
+          </ol>
+          <p>Phase 1 is the one ready to execute. The rest stay stubs until you call <code>plan-phase</code> on them. Then:</p>
+          <div class="codeblock">
+            <button class="copy" type="button" data-copy="phase-cmd">Copy</button>
+            <pre id="phase-cmd">plan-phase 1
+execute-phase 1
+verify-work 1</pre>
+          </div>
+          <p>Expect derivation notes, numerical scripts, convergence studies, and a verification document under <code>GPD/</code>. When the phases that carry the result are verified, the publication path is <code>write-paper</code>, <code>peer-review</code>, <code>respond-to-referees</code>, <code>arxiv-submission</code>.</p>
+        </section>
+
+        <section id="checks">
+          <h2><span class="num">06</span>What to demand before you believe a phase</h2>
+          <p>Verification is the stage that makes this a physics workflow. Read it the way you would read a student’s calculation before it goes into a draft.</p>
+          <ul class="checks">
+            <li><b>01</b><span>Dimensional consistency of every displayed relation.</span></li>
+            <li><b>02</b><span>A limiting case you already know: a free theory, a static limit, a recovered textbook formula.</span></li>
+            <li><b>03</b><span>The symmetry or conservation law the result is required to obey.</span></li>
+            <li><b>04</b><span>Numerical stability where a number will be quoted: cutoff, grid, seed, convergence.</span></li>
+            <li><b>05</b><span>An explicit record of missing evidence. A lookup that failed is part of the result.</span></li>
+          </ul>
+          <p>Single-shot analysis can also be run from the current workspace, with outputs under <code>GPD/analysis/</code>: <code>derive-equation</code>, <code>dimensional-analysis</code>, <code>limiting-cases</code>, <code>numerical-convergence</code>, and <code>sensitivity-analysis</code>. A parameter sweep needs an explicit script plus <code>--param</code> and <code>--range</code>, and it writes under <code>GPD/sweeps/</code>.</p>
+          <div class="callout">
+            <strong>Calibrate on a known result first.</strong> Point the first project at a derivation your group can redo by hand — a harmonic oscillator ladder, a cross section you teach, a limit of a formula already in your notes. Accept the workflow only after <code>verify-work</code> agrees with that standard. Then aim it at the open problem.
+          </div>
+        </section>
+
+        <section id="posture">
+          <h2><span class="num">07</span>Choose a posture, then leave the defaults alone</h2>
+          <p>The safest model-cost start named by the project is the <code>review</code> profile together with the runtime’s own default models. Change tiers only when you have a reason: consistency at the top end, or a tighter budget.</p>
+          <div class="profile-row">
+            <article>
+              <h3>deep-theory</h3>
+              <p>Long analytic arguments, convention-heavy calculation, careful notation.</p>
+            </article>
+            <article>
+              <h3>numerical</h3>
+              <p>Solvers, sweeps, convergence, and the scripts a referee might rerun.</p>
+            </article>
+            <article>
+              <h3>exploratory</h3>
+              <p>Early scoping, when the question is still moving and stubs are expected.</p>
+            </article>
+            <article>
+              <h3>review</h3>
+              <p>The conservative default. Use it while you learn the system’s boundary.</p>
+            </article>
+            <article>
+              <h3>paper-writing</h3>
+              <p>Manuscript assembly after the verified phases exist.</p>
+            </article>
+          </div>
+          <p>Profiles are set inside the runtime: <code>/gpd:set-profile review</code> on Claude Code and Gemini CLI, <code>$gpd-set-profile review</code> on Codex, and <code>/gpd-set-profile review</code> on Copilot CLI and OpenCode. <code>settings</code> on the same prefix is where autonomy, workflow defaults, and permission sync live. Keep autonomy at <code>supervised</code> until the checkpoints feel right, then consider <code>balanced</code>.</p>
+          <p>Three capability tiers exist if you later pin models: <code>tier-1</code> highest, <code>tier-2</code> the middle, <code>tier-3</code> the fastest. Model strings are whatever that runtime already accepts. <code>gpd cost</code> reads local telemetry and is an advisory view of spend, separate from the provider’s bill.</p>
+        </section>
+
+        <section id="publish">
+          <h2><span class="num">08</span>From a verified phase to arXiv</h2>
+          <p class="ladder" aria-label="Publication loop">
+            <span>write-paper</span><i>→</i>
+            <span>peer-review</span><i>→</i>
+            <span>respond-to-referees</span><i>→</i>
+            <span>arxiv-submission</span>
+          </p>
+          <p><code>write-paper</code> drafts from the current project. It can also take one explicit intake manifest (<code>write-paper --intake …</code>) for a bounded external manuscript. In that lane the manuscript root is <code>GPD/publication/&lt;subject&gt;/manuscript</code>, and the intake folder holds provenance. The tool does not harvest an arbitrary directory of notes and invent which claim has evidence.</p>
+          <p><code>peer-review</code> reads the project manuscript, or one path you name. <code>respond-to-referees</code> stays on the resolved manuscript. <code>arxiv-submission</code> packages a GPD-owned manuscript root or a <code>.tex</code> entrypoint. It is the packaging step, and you still submit.</p>
+          <p>If LaTeX is part of the plan, run <code>gpd doctor</code> and read the workflow-preset and LaTeX rows before you promise a camera-ready PDF. Optional local probes (<code>--live-executable-probes</code>) include <code>pdflatex</code> and, where you use it, <code>wolframscript</code>. Shared Wolfram status is <code>gpd integrations status wolfram</code>.</p>
+        </section>
+
+        <section id="afternoon">
+          <h2><span class="num">09</span>An afternoon to the first checkpoint</h2>
+          <ol class="steps">
+            <li>Install Node.js 20+ and confirm <code>python --version</code> is 3.11 or newer and that <code>python -m venv</code> works.</li>
+            <li>Confirm one runtime launches and is signed in: <code>claude</code>, <code>codex</code>, <code>gemini</code>, <code>gh copilot</code>, or <code>opencode</code>. The installer does not create that account or supply model credit.</li>
+            <li>In an empty project folder, run <code>npx -y get-physics-done</code>. Add <code>-- --claude --local</code> (or another runtime flag) when you want the scope explicit.</li>
+            <li>Run <code>gpd --help</code> and <code>gpd doctor</code>. Fix Node, Python, or the runtime launcher before you debug the physics commands.</li>
+            <li>Open the runtime. Run its help command, then <code>tour</code> if you want the map, then <code>new-project --minimal</code> on a result the group already knows.</li>
+            <li>Run <code>discuss-phase 1</code>, <code>plan-phase 1</code>, <code>execute-phase 1</code>, and <code>verify-work 1</code>. Prefix them the way the table in the loop section shows.</li>
+            <li>Open <code>GPD/STATE.md</code> and the verification file yourself. Compare the limiting case with the known result.</li>
+            <li>Only then point a new project at the question you cannot yet answer. Leave autonomy on Supervised.</li>
+          </ol>
+          <p>The full command reference inside the agent is <code>help --all</code> with your runtime’s prefix (<code>/gpd:help --all</code>, <code>$gpd-help --all</code>, or <code>/gpd-help --all</code>). This page is the orientation; that help text is the manual.</p>
+        </section>
+
+        <section id="name">
+          <h2><span class="num">10</span>Your name stays on the paper</h2>
+          <ul class="clean">
+            <li>You choose the question, the conventions, and which numerical error is small enough to publish.</li>
+            <li>You read the verification artifact. A fluent derivation with no limiting case is still unfinished.</li>
+            <li>You check citations. Literature commands such as <code>literature-review</code> and <code>digest-knowledge</code> are assistants to that reading.</li>
+            <li>You answer the referee. <code>respond-to-referees</code> can draft against the manuscript root; the letter that goes back is yours.</li>
+            <li>You decide when a tangent becomes a second hypothesis branch worth the group’s time.</li>
+            <li>If the system contributed to a published result, cite it. The block below matches the upstream README for version 1.2.2. Prefer <code>CITATION.cff</code> in the repository you actually ran.</li>
+          </ul>
+        </section>
+
+        <section id="credit">
+          <h2><span class="num">11</span>Credit the tool</h2>
+          <div class="codeblock">
+            <button class="copy" type="button" data-copy="bibtex">Copy</button>
+            <pre id="bibtex">@software{physical_superintelligence_2026_gpd,
+  author = {{Physical Superintelligence PBC}},
+  title  = {Get Physics Done (GPD)},
+  version = {1.2.2},
+  year   = {2026},
+  url    = {https://github.com/psi-oss/get-physics-done},
+  license = {Apache-2.0}
+}</pre>
+          </div>
+          <p>A suitable acknowledgement line: “This research made use of Get Physics Done (GPD), developed by Physical Superintelligence PBC (PSI).”</p>
+          <h3>Papers the project lists as using it</h3>
+          <ol class="papers">
+            <li>C. Ferko, S. Frank, J. Halverson, and V. Jejjala, <a href="https://arxiv.org/abs/2605.12488" target="_blank" rel="noopener">Anomalies in Neural Network Field Theory</a>, arXiv:2605.12488.</li>
+            <li>L. Eberhardt, <a href="https://arxiv.org/abs/2604.26038" target="_blank" rel="noopener">The Super Virasoro Minimal String from 3d Supergravity</a>, arXiv:2604.26038.</li>
+            <li>V. G. Filev, <a href="https://arxiv.org/abs/2604.05970" target="_blank" rel="noopener">Holographic entanglement entropy, Wilson loops, and neural networks</a>, arXiv:2604.05970.</li>
+            <li>C. Ferko, J. Halverson, V. Jejjala, and B. Robinson, <a href="https://arxiv.org/abs/2604.02313" target="_blank" rel="noopener">Topological Effects in Neural Network Field Theory</a>, arXiv:2604.02313.</li>
+          </ol>
+          <p>Upstream source: <a href="https://github.com/psi-oss/get-physics-done" target="_blank" rel="noopener">github.com/psi-oss/get-physics-done</a>. Project home: <a href="https://www.psi.inc" target="_blank" rel="noopener">psi.inc</a>.</p>
+        </section>
+      </article>
+
+      <footer class="colophon">
+        <p>Physics AI is an independent field guide for research groups. It describes Get Physics Done as published by Physical Superintelligence PBC and follows that project’s README for version 1.2.2. When the help text in your runtime and this page disagree, follow the help text.</p>
+        <p>Updated November 2026.</p>
+      </footer>
+    </main>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>
